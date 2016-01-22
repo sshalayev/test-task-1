@@ -103,6 +103,31 @@ angular.module('tagApp').controller('TeamsCtrl',
                     });
             };
 
+            TM.deleteMember = function(record) {
+                TM.showSpinner = true;
+
+                Member.delete({
+                    key1: record.id
+                }).$promise
+                    .then(function() {
+                        TM.showSpinner = false;
+                        toaster.pop({
+                            type: 'info',
+                            title: 'Success',
+                            body: 'Member successfully removed from team'
+                        });
+                        TM.loadTeam(TM.selectedProject);
+                    })
+                    .catch(function() {
+                        TM.showSpinner = false;
+                        toaster.pop({
+                            type: 'error',
+                            title: 'Error',
+                            body: 'Error occurred'
+                        });
+                    });
+            };
+
             function waitForPromises() {
                 $q.all([
                         TM.projects.$promise,

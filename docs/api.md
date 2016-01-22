@@ -153,7 +153,12 @@ POST /api/tag/:userId/:projectId
 
 ### Get tags list for user
 ```
-GET /api/tag/user/:userId
+GET /api/tag/:userId
+```
+
+### Get tags list for user (for project)
+```
+GET /api/tag/:userId/:projectId
 ```
 
 ### Update tag

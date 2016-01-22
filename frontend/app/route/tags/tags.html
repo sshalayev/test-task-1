@@ -3,5 +3,113 @@
 <div class="mdl-spinner mdl-js-spinner abscenter" ng-class="{'is-active': TG.showSpinner}"></div>
 
 <section>
-    Not ready yet
+
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp projects-teams-tbl">
+                <thead>
+                <tr>
+                    <th class="name">User</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="record in TG.users track by record.id"
+                    ng-click="TG.selectUser(record)"
+                    ng-class="{'selected': record.selected}">
+                    <td class="name">
+                        <span>{{record.full_name}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="mdl-cell mdl-cell--6-col">
+
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp projects-teams-tbl">
+                <thead>
+                <tr>
+                    <th>Project</th>
+                    <th>Tags</th>
+                    <th class="w20">&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="record in TG.projects track by record.id">
+                    <td>
+                        <span>{{record.name}}</span>
+                    </td>
+                    <td>
+                        <span ng-show="TG.selectedUser">{{record.tags | extractTags}}</span>
+                        <span ng-show="!TG.selectedUser">User not selected</span>
+                    </td>
+                    <td>
+                        <i class="material-icons btn" ng-show="TG.selectedUser" ng-click="TG.selectProject(record)">&#xE254;</i>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="tags-edit-panel" ng-show="TG.selectedTags.length || TG.createFirstTag">
+
+        <i class="material-icons btn top-right" ng-click="TG.selectedTags=null">&#xE5CD;</i>
+
+        <div class="rel-cont tags-tbl">
+
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored top-right-up"
+                    ng-click="TG.showAdd=true;"
+                    ng-show="TG.selectedTags">
+                <i class="material-icons">add</i>
+            </button>
+
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp w100p">
+                <thead>
+                <tr>
+                    <th>Tag</th>
+                    <th class="w20">&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="record in TG.selectedTags track by record.id">
+                    <td>
+                        <span ng-show="!record.isEdit">{{record.name}}</span>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ng-show="record.isEdit">
+                            <input class="mdl-textfield__input" type="text" ng-model="record.name">
+                        </div>
+                    </td>
+                    <td>
+                        <i class="material-icons btn" ng-show="!record.isEdit" ng-click="TG.editOn(record)">&#xE254;</i>
+                        <i class="material-icons btn" ng-show="record.isEdit" ng-click="TG.saveTag(record)">&#xE876;</i>
+                        <i class="material-icons btn" ng-show="record.isEdit" ng-click="record.isEdit=false">&#xE5CD;</i>
+                        <i class="material-icons btn" ng-show="!record.isEdit" ng-click="TG.deleteTag(record)">&#xE872;</i>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp w100p" ng-show="TG.showAdd">
+                <tbody>
+                <tr>
+                    <td class="name">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" placeholder="Tag name" ng-model="TG.newTag.name">
+                        </div>
+                    </td>
+                    <td class="w20">
+                        <i class="material-icons btn" ng-click="TG.addTag()">&#xE876;</i>
+                        <i class="material-icons btn" ng-click="TG.showAdd=false">&#xE5CD;</i>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
 </section>

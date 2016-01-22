@@ -40,6 +40,7 @@
                     <thead>
                     <tr>
                         <th class="name">Team member</th>
+                        <th class="w20">&nbsp;</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -47,14 +48,17 @@
                         <td class="name">
                             <span>{{TM.getMemberName(record.member_id)}}</span>
                         </td>
+                        <td>
+                            <i class="material-icons btn" ng-show="!record.isEdit" ng-click="TM.deleteMember(record)">&#xE872;</i>
+                        </td>
                     </tr>
                     <tr ng-show="!TM.team.length && !TM.selectedProject">
-                        <td>
+                        <td colspan="2">
                             Please select a project
                         </td>
                     </tr>
                     <tr ng-show="!TM.team.length && TM.selectedProject">
-                        <td>
+                        <td colspan="2">
                             You can add members to team
                         </td>
                     </tr>

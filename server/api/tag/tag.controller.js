@@ -19,16 +19,31 @@ module.exports.createTag = function(req, res, next) {
         .catch(next);
 };
 
+// Get tags for user (for project)
+module.exports.getTagsForUserProject = function (req, res, next) {
+
+    db.models.Tag.findAll({
+        where: {
+            'user_id': req.params.userId,
+            'project_id': req.params.projectId
+        }
+    })
+        .then(function(tags) {
+            res.status(200).json(tags);
+        })
+        .catch(next);
+};
+
 // Get tags for user
 module.exports.getTagsForUser = function (req, res, next) {
 
     db.models.Tag.findAll({
-        where: {
-            user_id: req.params.userId
-        }
-    })
-        .then(function(projects) {
-            res.status(200).json(projects);
+            where: {
+                user_id: req.params.userId
+            }
+        })
+        .then(function(tags) {
+            res.status(200).json(tags);
         })
         .catch(next);
 };

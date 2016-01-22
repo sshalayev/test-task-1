@@ -33,6 +33,14 @@ section {
     margin: 16px 0 0 0 !important;
 }
 
+.w20 {
+    width: 20px;
+}
+
+.w100p {
+    width: 100%;
+}
+
 .mdl-textfield {
     width: 100% !important;
 }
@@ -91,6 +99,12 @@ section {
     z-index: 9898989898;
 }
 
+.top-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
 .top-right-up {
     position: absolute;
     right: -28px;
@@ -123,4 +137,23 @@ section {
 .projects-teams-tbl tr.selected {
     background-color: rgba(13, 71, 161, 0.4);
     font-weight: bold;
+}
+
+.tags-edit-panel {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    padding: 20px 40px 20px 40px;
+    width: 100%;
+    background-color: rgba(0,0,0,.1);
+}
+
+.tags-tbl {
+    width: 50%;
+    min-width: 400px;
+    margin: 0 auto 0 auto;
+}
+
+.tags-tbl th, .tags-tbl td {
+    text-align: left;
 }
