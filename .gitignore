@@ -1,0 +1,9 @@
+node_modules
+logs
+.idea
+.tmp
+npm-debug.log
+.sass-cache
+.~lock.*
+nbproject
+/nbproject/private/

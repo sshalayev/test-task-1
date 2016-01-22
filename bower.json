@@ -1,0 +1,32 @@
+{
+  "name": "Tags",
+  "version": "1.0.0",
+  "description": "Tags test application",
+  "main": "./frontend/app/app.js",
+  "authors": [
+    "kostysh@gmail.com"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "tags"
+  ],
+  "homepage": "https://tags-qoderoom.rhcloud.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "es5-shim": "latest",
+    "angular-resource": "latest",
+    "angular-sanitize": "latest",
+    "angular-ui-router": "latest",
+    "angular-recursion": "latest",
+    "material-design-lite": "latest",
+    "angularjs-toaster": "#master"
+  }
+}

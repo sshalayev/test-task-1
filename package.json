@@ -1,0 +1,50 @@
+{
+  "name": "Tags",
+  "version": "1.0.0",
+  "description": "Tags test application",
+  
+  "keywords": [
+    "tags"
+  ],
+  
+  "author": {
+    "name": "kostysh",
+    "email": "k.smirnov@qoderoom.com"
+  },
+  
+  "homepage": "https://tags-qoderoom.rhcloud.com",
+  
+  "repository": {
+    "type": "git",
+    "url": "ssh://569f6cd489f5cfb56d0000ea@tags-qoderoom.rhcloud.com/~/git/tags.git/"
+  },
+
+  "engines": {
+    "node": ">= 0.10.0",
+    "npm": ">= 1.0.0"
+  },
+
+  "dependencies": {
+    "express": "latest",
+    "hjs": "latest",
+    "body-parser": "latest",
+    "method-override": "latest",
+    "composable-middleware": "latest",
+    "pg": "latest",
+    "sequelize": "latest",
+    "async": "latest",
+    "lodash": "latest"
+  },
+
+  "devDependencies": {
+    "errorhandler": "latest",
+    "morgan": "latest"
+  },
+  
+  "private": true,
+  "main": "./server/app.js",
+  "scripts": {
+    "start": "node ./server/app.js",
+    "test": "echo \"No test specified\" && exit 1"
+  }
+}

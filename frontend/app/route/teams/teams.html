@@ -1,0 +1,85 @@
+<div ng-include="'app/components/header/header.html'"></div>
+
+<div class="mdl-spinner mdl-js-spinner abscenter" ng-class="{'is-active': TM.showSpinner}"></div>
+
+<section>
+
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp projects-teams-tbl">
+                <thead>
+                <tr>
+                    <th class="name">Project name</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="record in TM.projects track by record.id"
+                    ng-click="TM.selectProject(record)"
+                    ng-class="{'selected': record.selected}">
+                    <td class="name">
+                        <span>{{record.name}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+
+            <div class="rel-cont">
+
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored top-right-up"
+                        ng-click="TM.showAdd=true;"
+                        ng-show="TM.selectedProject">
+                    <i class="material-icons">add</i>
+                </button>
+
+                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp projects-teams-tbl">
+
+                    <thead>
+                    <tr>
+                        <th class="name">Team member</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="record in TM.team track by record.id">
+                        <td class="name">
+                            <span>{{TM.getMemberName(record.member_id)}}</span>
+                        </td>
+                    </tr>
+                    <tr ng-show="!TM.team.length && !TM.selectedProject">
+                        <td>
+                            Please select a project
+                        </td>
+                    </tr>
+                    <tr ng-show="!TM.team.length && TM.selectedProject">
+                        <td>
+                            You can add members to team
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp projects-teams-tbl" ng-show="TM.showAdd">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <select class="mdl-select" ng-options="option.id as option.full_name for option in TM.users"
+                                    ng-model="TM.newMember">
+                            </select>
+                        </td>
+                        <td>
+                            <i class="material-icons btn" ng-click="TM.addMember()">&#xE876;</i>
+                            <i class="material-icons btn" ng-click="TM.showAdd=false">&#xE5CD;</i>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>

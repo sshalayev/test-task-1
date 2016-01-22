@@ -1,1 +1,7 @@
-# test-task-1
+# Tags app
+
+```
+npm install
+bower install
+npm start
+```

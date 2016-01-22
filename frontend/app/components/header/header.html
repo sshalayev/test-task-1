@@ -1,0 +1,10 @@
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" ng-controller="headerCtrl as HD">
+    <div class="mdl-tabs__tab-bar">
+        <a href="#{{item.id+'-panel'}}" class="mdl-tabs__tab"
+           ng-repeat="item in HD.menu track by item.id"
+           ng-class="{'is-active': item.active}"
+           ng-click="HD.onMenuClick(item.id)">{{item.title}}</a>
+    </div>
+    <div class="mdl-tabs__panel is-active" id="{{item.id+'-panel'}}"
+         ng-repeat="item in HD.menu track by item.id"></div>
+</div>

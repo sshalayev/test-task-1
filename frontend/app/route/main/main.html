@@ -1,0 +1,79 @@
+<div ng-include="'app/components/header/header.html'"></div>
+
+<div class="mdl-spinner mdl-js-spinner abscenter" ng-class="{'is-active': MN.showSpinner}"></div>
+
+<section>
+
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp users-tbl">
+        <thead>
+        <tr>
+            <th class="name">Name</th>
+            <th class="fullname">Full name</th>
+            <th class="role">Role</th>
+            <th class="actions"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="record in MN.users track by record.id">
+            <td class="name">
+                <span ng-show="!record.isEdit">{{record.username}}</span>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ng-show="record.isEdit">
+                    <input class="mdl-textfield__input" type="text" ng-model="record.username">
+                </div>
+            </td>
+            <td>
+                <span ng-show="!record.isEdit">{{record.full_name}}</span>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ng-show="record.isEdit">
+                    <input class="mdl-textfield__input" type="text" ng-model="record.full_name">
+                </div>
+            </td>
+            <td>
+                <span ng-show="!record.isEdit">{{record.role}}</span>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ng-show="record.isEdit">
+                    <input class="mdl-textfield__input" type="text" ng-model="record.role">
+                </div>
+            </td>
+            <td>
+                <i class="material-icons btn" ng-show="!record.isEdit" ng-click="MN.editOn(record)">&#xE254;</i>
+                <i class="material-icons btn" ng-show="record.isEdit" ng-click="MN.saveUser(record)">&#xE876;</i>
+                <i class="material-icons btn" ng-show="record.isEdit" ng-click="record.isEdit=false">&#xE5CD;</i>
+                <i class="material-icons btn" ng-show="!record.isEdit" ng-click="MN.deleteUser(record)">&#xE872;</i>
+            </td>
+        </tr>
+        <tr ng-show="!MN.users.length">
+            <td colspan="4" class="center">No records</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp users-tbl" ng-show="MN.showAdd">
+        <tbody>
+        <tr>
+            <td>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" placeholder="Name" ng-model="MN.newUser.username">
+                </div>
+            </td>
+            <td>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" placeholder="Full name" ng-model="MN.newUser.full_name">
+                </div>
+            </td>
+            <td>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" placeholder="Role" ng-model="MN.newUser.role">
+                </div>
+            </td>
+            <td>
+                <i class="material-icons btn" ng-click="MN.addUser(record)">&#xE876;</i>
+                <i class="material-icons btn" ng-click="MN.showAdd=false">&#xE5CD;</i>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bot-right" ng-click="MN.newUser={};MN.showAdd=true;">
+        <i class="material-icons">add</i>
+    </button>
+
+</section>

@@ -1,0 +1,61 @@
+<div ng-include="'app/components/header/header.html'"></div>
+
+<div class="mdl-spinner mdl-js-spinner abscenter" ng-class="{'is-active': PRG.showSpinner}"></div>
+
+<section>
+
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp projects-tbl">
+        <thead>
+        <tr>
+            <th class="name">Project name</th>
+            <th class="creator">Creator</th>
+            <th class="actions"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="record in PRG.projects track by record.id">
+            <td class="name mdl-data-table__cell--non-numeric">
+                <span ng-show="!record.isEdit">{{record.name}}</span>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ng-show="record.isEdit">
+                    <input class="mdl-textfield__input" type="text" ng-model="record.name">
+                </div>
+            </td>
+            <td>
+                <span ng-show="!record.isEdit">{{PRG.getCreatorName(record.creator_id)}}</span>
+            </td>
+            <td>
+                <i class="material-icons btn" ng-show="!record.isEdit" ng-click="PRG.editOn(record)">&#xE254;</i>
+                <i class="material-icons btn" ng-show="record.isEdit" ng-click="PRG.saveProject(record)">&#xE876;</i>
+                <i class="material-icons btn" ng-show="record.isEdit" ng-click="record.isEdit=false">&#xE5CD;</i>
+                <i class="material-icons btn" ng-show="!record.isEdit" ng-click="PRG.deleteProject(record)">&#xE872;</i>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp projects-tbl" ng-show="PRG.showAdd">
+        <tbody>
+        <tr>
+            <td class="name">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" placeholder="Project name" ng-model="PRG.newProject.name">
+                </div>
+            </td>
+            <td>
+                <select class="mdl-select mt16" ng-options="option.id as option.full_name for option in PRG.users"
+                        ng-model="PRG.newProject.creator_id">
+                </select>
+            </td>
+            <td>
+                <i class="material-icons btn" ng-click="PRG.addProject()">&#xE876;</i>
+                <i class="material-icons btn" ng-click="PRG.showAdd=false">&#xE5CD;</i>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bot-right" ng-click="PRG.showAdd=true;">
+        <i class="material-icons">add</i>
+    </button>
+
+</section>

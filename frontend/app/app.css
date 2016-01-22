@@ -1,0 +1,126 @@
+.abscenter {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.center {
+    text-align: center;
+}
+
+section {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px;
+}
+
+#toast-container {
+    z-index: 999999999999999 !important;
+}
+
+.p10 {
+    padding: 10px;
+}
+
+.pt6 {
+    padding-top: 6px !important;
+}
+
+.mt16 {
+    margin: 16px 0 0 0 !important;
+}
+
+.mdl-textfield {
+    width: 100% !important;
+}
+
+.mdl-select {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    display: block;
+    font-size: 16px;
+    margin: 0;
+    padding: 4px 0;
+    width: 100%;
+    background: 0 0;
+    text-align: left;
+    color: inherit;
+}
+
+.users-tbl {
+    width: 90%;
+    margin: 0 auto 0 auto;
+}
+
+.users-tbl .name {
+    width: 25%;
+    text-align: left;
+}
+
+.users-tbl .fullname {
+    width: 25%;
+}
+
+.users-tbl .role {
+    width: 20%;
+}
+
+.users-tbl .actions {
+    width: 30%;
+}
+
+.material-icons.btn {
+    cursor: pointer;
+}
+
+.material-icons.btn:hover {
+    background-color: rgba(0,0,0,.1);
+}
+
+.rel-cont {
+    position: relative;
+}
+
+.bot-right {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9898989898;
+}
+
+.top-right-up {
+    position: absolute;
+    right: -28px;
+    top: -28px;
+    z-index: 98989898;
+}
+
+.projects-tbl {
+    width: 80%;
+    margin: 0 auto 0 auto;
+}
+
+.projects-tbl .name {
+    width: 50%;
+    text-align: left;
+}
+
+.projects-tbl .creator {
+    width: 20%;
+}
+
+.projects-teams-tbl {
+    width: 100%;
+}
+
+.projects-teams-tbl th, .projects-teams-tbl td {
+    text-align: left;
+}
+
+.projects-teams-tbl tr.selected {
+    background-color: rgba(13, 71, 161, 0.4);
+    font-weight: bold;
+}
